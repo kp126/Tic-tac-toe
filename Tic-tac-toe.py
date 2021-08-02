@@ -1,4 +1,4 @@
-import random
+from random import choice
 
 
 def enter_name(player_number):
@@ -112,22 +112,22 @@ while True:
         while True:
             print('Введи номер строки и колонки через пробел куда делаешь ход.\n'
                   'Например, 1 3 для хода третью ячейку первой строки\n')
-            first = random.choice(players)
+            first = choice(players)
             print(f'Великий рандом подбрасывает монетку и первый ход делает {first}')
             win = 0
             place = [[' ', '1', '2', '3'], ['1', '*', '*', '*'], ['2', '*', '*', '*'], ['3', '*', '*', '*']]
             game_board()
             while True:
                 if win == 1:
-                    print('НИЧЬЯ')
                     input('Нажми ENTER для новой игры')
                     print('*' * 50)
                     print('НОВАЯ ИГРА')
                     break
                 elif win == 2:
+                    print('НИЧЬЯ')
                     input('Нажми ENTER для новой игры')
                     print('*' * 50)
-                    print('НИЧЬЯ\nНОВАЯ ИГРА')
+                    print('НОВАЯ ИГРА')
                     break
                 else:
                     player_turn('Х')
