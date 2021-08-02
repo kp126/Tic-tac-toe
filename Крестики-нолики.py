@@ -42,7 +42,7 @@ def player_turn(XO):
     """
     global first
     while True:
-        if win == 1:
+        if win == 1 or win == 2:
             return win
         try:
             move = input(f'{first},твой ход (введи две цифры через пробел): ')
@@ -90,6 +90,12 @@ def victory_conditions(XO):
     elif (place[1][3] == XO and place[2][3] == XO and place[3][3]) == XO:
         print(f'У нас есть победитель! Это {first}!!!')
         win = 1
+    else:
+        star_count = 0
+        for w in place:
+            star_count += w.count('*')
+        if star_count == 0:
+            win = 2
     return win
 
 
@@ -113,8 +119,15 @@ while True:
             game_board()
             while True:
                 if win == 1:
+                    print('НИЧЬЯ')
+                    input('Нажми ENTER для новой игры')
                     print('*' * 50)
                     print('НОВАЯ ИГРА')
+                    break
+                elif win == 2:
+                    input('Нажми ENTER для новой игры')
+                    print('*' * 50)
+                    print('НИЧЬЯ\nНОВАЯ ИГРА')
                     break
                 else:
                     player_turn('Х')
